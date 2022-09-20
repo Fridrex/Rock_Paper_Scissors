@@ -46,8 +46,29 @@ function playRound(playerSelection, computerSelection) {
 const playerSelection = 'Rock';
 const computerSelection = getComputerChoice();
 
-console.log(playRound(playerSelection, computerSelection))
 
-function game() {
+let playerScores = 0;
+let pcScores = 0;  
 
+
+function game() {  
+    let roundResult = playRound(playerSelection, computerSelection);
+
+    for (let i = 0; i < 5; i++) {
+        roundResult;
+        if (roundResult.search('You Win!') > -1) {
+            playerScores++;
+          } else if (roundResult.search('You Lose!') > -1) {
+            pcScores++;
+        }
+        console.log(playerScores, pcScores);
+    }
+
+    if (playerScores >= 5 && pcScores < 5) {
+        return 'Game Over. You Win!';
+      } else if (playerScores < 5 && pcScores >= 5) {
+        return 'Game Over. You Lose!';
+      }
 }
+
+game();
